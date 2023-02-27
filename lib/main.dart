@@ -9,17 +9,45 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        //Scaffold는 위젯
-        appBar: AppBar(
-          // AppBar도 위젯
-          title: Text('Hello flutter!'), //Text도 위젯
-        ),
-        body: Center(
-          // Center도 위젯
-          child: Text('Hello worlDd!'),
+        backgroundColor: Color(0xFF181818),
+        body: Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: 40,
+          ),
+          child: Column(
+            children: [
+              SizedBox(
+                height: 80,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text(
+                        'Hey, Selena',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 28,
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                      Text(
+                        'Welcome back',
+                        style: TextStyle(
+                          color: Color.fromRGBO(255, 255, 255, 0.8),
+                          fontSize: 18,
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
   }
 }
-// 컨트롤 눌러서 들어가보면 다 위젯 상속받고 있는 class 안에 선언된 변수들이다
