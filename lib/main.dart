@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:toonflix7/widgets/botton.dart';
 
 void main() {
   runApp(App());
@@ -7,21 +8,25 @@ void main() {
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    //빌드 위젯을 오버라이드
     return MaterialApp(
+      // 리턴에 위젯을 선언해버리네
+      //이 맨처음 위젯이 맨아래 깔리는 땅 같은 느낌이고
+      // 그다음 scaffold라는 위젯을 깔고 그위에 padding 위젯깔고 이런 느낌이다
       home: Scaffold(
-        backgroundColor: const Color(0xFF181818),
+        //home은 변수인데 타입이 위젯이라 scaffold 위젯으로 초기화
+        backgroundColor: const Color.fromARGB(255, 132, 44, 44),
+        //Scaffold 위젯의 변수인 backgroundColor 는 color타입 변수
         body: Padding(
+          //
           padding: const EdgeInsets.symmetric(
-            horizontal: 40,
+            horizontal: 25,
           ),
           child: Column(
-            // column 위젯 팝업?툴박스 보면 변수명 옆에 = 있는건 설정안할시 자동 설정되는 초기값임
-            // 그래서아래서 verticalDirection이 없어도 에러안남
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              //children은 위젯list로 선언되어있음 그래서 대괄호로 묶음
               const SizedBox(
-                height: 40,
+                height: 80,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -32,7 +37,7 @@ class App extends StatelessWidget {
                       Text(
                         'Hey, Selena',
                         style: TextStyle(
-                          color: Color.fromARGB(255, 236, 50, 50),
+                          color: Colors.white,
                           fontSize: 28,
                           fontWeight: FontWeight.w800,
                         ),
@@ -40,7 +45,7 @@ class App extends StatelessWidget {
                       Text(
                         'Welcome back',
                         style: TextStyle(
-                          color: Color.fromRGBO(30, 195, 69, 0.8),
+                          color: Color.fromRGBO(255, 255, 255, 0.8),
                           fontSize: 18,
                         ),
                       ),
@@ -73,48 +78,110 @@ class App extends StatelessWidget {
                 height: 30,
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: const [
+                  Button(
+                    text: 'Transfer',
+                    bgColor: Color(0xFFF1B33B),
+                    textColor: Colors.black,
+                  ),
+                  Button(
+                    text: 'Request',
+                    bgColor: Color(0xFF1F2123),
+                    textColor: Colors.white,
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 100,
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Colors.amber,
-                      borderRadius: BorderRadius.circular(45),
-                    ),
-                    child: const Padding(
-                      padding: EdgeInsets.symmetric(
-                        vertical: 20,
-                        horizontal: 50,
-                      ),
-                      child: Text(
-                        'Transfer',
-                        style: TextStyle(
-                          fontSize: 20,
-                        ),
-                      ),
+                  const Text(
+                    'Wallets',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 36,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.amber,
-                        borderRadius: BorderRadius.circular(45),
+                  Text(
+                    'View All',
+                    style: TextStyle(
+                      color: Colors.white.withOpacity(0.8),
+                      fontSize: 18,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Container(
+                clipBehavior: Clip.hardEdge,
+                decoration: BoxDecoration(
+                  color: const Color(0xFF1F2123),
+                  borderRadius: BorderRadius.circular(25),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(30),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'Euro',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 32,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Row(
+                            children: [
+                              const Text(
+                                '6 428',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 5,
+                              ),
+                              Text(
+                                'EUR',
+                                style: TextStyle(
+                                  color: Colors.white.withOpacity(0.8),
+                                  fontSize: 20,
+                                ),
+                              ),
+                            ],
+                          )
+                        ],
                       ),
-                      child: const Padding(
-                        padding: EdgeInsets.symmetric(
-                          vertical: 20,
-                          horizontal: 50,
-                        ),
-                        child: Text(
-                          'request',
-                          style: TextStyle(
-                            fontSize: 20,
+                      Transform.scale(
+                        scale: 2.2,
+                        child: Transform.translate(
+                          offset: const Offset(-5, 12),
+                          child: const Icon(
+                            Icons.euro_rounded,
+                            color: Colors.white,
+                            size: 88,
                           ),
                         ),
-                      ),
-                    ),
-                  )
-                ],
-              )
+                      )
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ),
